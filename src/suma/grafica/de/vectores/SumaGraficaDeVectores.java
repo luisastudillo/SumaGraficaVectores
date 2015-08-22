@@ -16,6 +16,11 @@ public class SumaGraficaDeVectores {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        // Este es un commit de prueba
+        
+    }
+    public void primera(){
+        
     }
     
 }
