@@ -20,7 +20,7 @@ public class SumaGraficaDeVectores {
         
     }
     public void primera(){
-        
+        //primera buena
     }
     
 }
