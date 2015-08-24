@@ -5,6 +5,7 @@
  */
 package vectoresGraficos;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.Random;
 
@@ -15,8 +16,8 @@ import java.util.Random;
 public class VectorGrafico {
     
     private int id;
-    private int[] color  = new int[3];
-    private Point puntoInicial, puntoFinal, pFlecha1, pFlecha2;
+    private Color color;
+    private Point puntoInicial, puntoFinal, pFlecha1 , pFlecha2;
         
     public VectorGrafico(int id, Point puntoInicial, Point puntoFinal){
         
@@ -24,13 +25,15 @@ public class VectorGrafico {
         this.puntoInicial = puntoInicial;
         this.puntoFinal = puntoFinal;
         this.color = generarColor();
+        pFlecha1 = new Point();
+        pFlecha2 = new Point();
         puntosFlecha();
     }
     
     private void puntosFlecha() {
         double ang = 0.0, angSep = 0.0;
         double tx, ty;
-        int dist = 0;
+        int dist = 20;
        
         /* (la coordenadas de la ventana es al revez)
          calculo de la variacion de "x" y "y" para hallar el angulo
@@ -56,16 +59,15 @@ public class VectorGrafico {
         pFlecha1.y = (int) (puntoFinal.y - dist * Math.sin(ang - Math.toRadians(angSep)));
         pFlecha2.x = (int) (puntoFinal.x + dist * Math.cos(ang + Math.toRadians(angSep)));
         pFlecha2.y = (int) (puntoFinal.y - dist * Math.sin(ang + Math.toRadians(angSep)));
-
+        System.out.println("Coordenadas de flecha 1: " + pFlecha1.x + "," + pFlecha1.y);
+        System.out.println("Coordenadas de flecha 2: " + pFlecha2.x + "," + pFlecha2.y);
     }
             
-    private int[] generarColor(){
+    private Color generarColor(){
         int[] retorno = new int[3];
-        Random r = new Random();
-        retorno[0] = r.nextInt(256);
-        retorno[1] = r.nextInt(256);
-        retorno[2] = r.nextInt(256);
-        return retorno;
+        Random r = new Random();        
+        Color color = new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256));
+        return color;
     }
     
     public int getId() {
@@ -76,15 +78,31 @@ public class VectorGrafico {
         this.id = id;
     }
 
-    public int[] getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(int r, int g, int b) {
-        color[0] = r;
-        color[1] = g;
-        color[2] = b;
+    public void setColor(Color color) {
+        this.color = color;
     }
+
+    public Point getpFlecha1() {
+        return pFlecha1;
+    }
+
+    public void setpFlecha1(Point pFlecha1) {
+        this.pFlecha1 = pFlecha1;
+    }
+
+    public Point getpFlecha2() {
+        return pFlecha2;
+    }
+
+    public void setpFlecha2(Point pFlecha2) {
+        this.pFlecha2 = pFlecha2;
+    }
+
+  
 
     public Point getPuntoInicial() {
         return puntoInicial;
