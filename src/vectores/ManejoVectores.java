@@ -23,6 +23,7 @@ public  class ManejoVectores {
         Vector resultante = new Vector();
         Point pInicial = v1.getPuntoInicial();
         Point pFinal = v2.getPuntoFinal();
+        //Cambio
         return resultante;        
     }
     
