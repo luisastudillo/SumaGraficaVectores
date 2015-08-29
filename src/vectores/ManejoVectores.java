@@ -26,18 +26,15 @@ public  class ManejoVectores {
     }
     
     
-//    /**
-//     * Retorna el vector resultante de una suma de vectores
-//     * @param v1 El primer vector de la suma
-//     * @param v2 El último vector agregado a la suma
-//     * @return
-//     */
-//    public static Vector vectorResultante(Vector v1, Vector v2){
-//        Vector resultante = new Vector();
-//        Point pInicial = v1.getPuntoInicial();
-//        Point pFinal = v2.getPuntoFinal();
-//        return resultante;
-//    }
+    public void actualizarVectorResultante(Vector v){
+        Vector resultante = listaVectores.get(0);
+        Point pFinal = resultante.getPuntoFinal();
+        Point pFinalNuevo = v.getPuntoFinal();
+        
+        pFinal.x = pFinal.x + pFinalNuevo.x;
+        pFinal.y = pFinal.y + pFinalNuevo.y;
+        
+    }
 
     public ArrayList<Vector> getListaVectores() {
         return listaVectores;
@@ -51,10 +48,11 @@ public  class ManejoVectores {
     
     
     public boolean agregarVector(Point p1, Point p2) {
-        Vector v = listaVectores.get(id + 1);
+        Vector v = listaVectores.get(id);
         if (v.getPuntoInicial().equals(p1) && v.getPuntoFinal().equals(p2)) {
             id++;
             listaVectores.add(new Vector(id, p1, p2));
+            agregarVectorGrafico();
             
             
             return true;
@@ -64,7 +62,7 @@ public  class ManejoVectores {
     }
     
     public void agregarVectorGrafico(){
-        
+        VectorGrafico vGrafico = listaVectoresGraficos.get(id);
         
         
     }
