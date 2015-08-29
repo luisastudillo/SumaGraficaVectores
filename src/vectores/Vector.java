@@ -16,6 +16,14 @@ public class Vector {
     private int id;
     private Point puntoInicial, puntoFinal;
 
+    public Vector(int id, Point puntoInicial, Point puntoFinal) {
+        this.id = id;
+        this.puntoInicial = puntoInicial;
+        this.puntoFinal = puntoFinal;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
