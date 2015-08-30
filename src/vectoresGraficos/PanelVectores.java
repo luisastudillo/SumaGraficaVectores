@@ -10,9 +10,7 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import javax.swing.JFrame;
 import vectores.ManejoVectores;
-import vectores.Vector;
 
 /**
  *
@@ -21,6 +19,15 @@ import vectores.Vector;
 public class PanelVectores extends Canvas{
     
     ManejoVectores manejadorVectores;
+
+    public PanelVectores() {
+        manejadorVectores = new ManejoVectores();
+        manejadorVectores.agregarVector(new Point(50, 50));
+        manejadorVectores.agregarVector(new Point(50, 200));
+        manejadorVectores.agregarVector(new Point(10, 80));
+    }
+    
+    
     
     @Override
     public void paint(Graphics g) {
@@ -28,22 +35,12 @@ public class PanelVectores extends Canvas{
         for (VectorGrafico vector : manejadorVectores.getListaVectoresGraficos()) {
             g2.setColor(vector.getColor());
             g2.setStroke(new BasicStroke(3.5f));
+            //Grafico el vector
             g2.drawLine(vector.getPuntoInicial().x, vector.getPuntoInicial().y, vector.getPuntoFinal().x, vector.getPuntoFinal().y);
+            //Grafico las saetas
             g2.drawLine(vector.getPuntoFinal().x, vector.getPuntoFinal().y, vector.getpFlecha1().x, vector.getpFlecha1().y);
             g2.drawLine(vector.getPuntoFinal().x, vector.getPuntoFinal().y, vector.getpFlecha2().x, vector.getpFlecha2().y);
         }
-    }
-    
-    public static void main(String[] args){
-        PanelVectores canvas = new PanelVectores();
-        JFrame frame = new JFrame();
-        frame.setSize(400, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Here we add it to the frame
-        frame.getContentPane().add(canvas);
-        frame.setVisible(true);
-        
-        
-    }
+    }    
     
 }
