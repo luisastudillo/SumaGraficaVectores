@@ -17,26 +17,30 @@ public  class ManejoVectores {
     
     ArrayList<Vector> listaVectores;
     ArrayList<VectorGrafico> listaVectoresGraficos;
+    
     int id =0;
     
     public ManejoVectores(){
         listaVectores = new ArrayList<>();
         listaVectoresGraficos = new ArrayList<>();
-        listaVectores.add(new Vector(0, new Point(0,0), new Point(0,0)));
+        Point cero = new Point(0,0);
+        
+        listaVectores.add(new Vector(id, cero));
+        listaVectoresGraficos.add(new VectorGrafico(id, cero,cero));
     }
     
     
-    public boolean agregarVector(Point p1, Point p2) {
-        Vector v = listaVectores.get(id);
-        if (v.getPuntoInicial().equals(p1) && v.getPuntoFinal().equals(p2)) {
+    public boolean agregarVector(Point pFinalNuevo) {
+        Vector ultimo = listaVectores.get(id);
+        if (ultimo.getPuntoFinal().equals(pFinalNuevo)) {                       
+            return false;
+        } else {
             id++;
-            Vector nuevo = new Vector(id, p1, p2);
+            Vector nuevo = new Vector(id, pFinalNuevo);
             listaVectores.add(nuevo);
             actualizarVectorResultante();
-            agregarVectorGrafico(nuevo);           
+            agregarVectorGrafico(nuevo);
             return true;
-        } else {
-            return false;
         }
     }
     
@@ -52,16 +56,18 @@ public  class ManejoVectores {
     }
     
     public void agregarVectorGrafico(Vector agregado){
-        VectorGrafico ultimo = listaVectoresGraficos.get(id);
+        VectorGrafico ultimo = listaVectoresGraficos.get(id-1);
         Point pFinalNuevo = new Point(ultimo.getPuntoFinal().x + agregado.getPuntoFinal().x, ultimo.getPuntoFinal().y + agregado.getPuntoFinal().y);
         VectorGrafico nuevo = new VectorGrafico(id, ultimo.getPuntoFinal(), pFinalNuevo);
         listaVectoresGraficos.add(nuevo);
+        actualizarVectorGráficoResultante();
     }
     
-    public void actualizarVectorGráfico(){
+    public void actualizarVectorGráficoResultante(){
         VectorGrafico resultante = listaVectoresGraficos.get(0);
         VectorGrafico ultimo = listaVectoresGraficos.get(id);
         VectorGrafico resultanteNuevo = new VectorGrafico(0, resultante.getPuntoInicial(), ultimo.getPuntoFinal());
+        listaVectoresGraficos.remove(0);
         listaVectoresGraficos.add(0, resultanteNuevo);        
     }
     

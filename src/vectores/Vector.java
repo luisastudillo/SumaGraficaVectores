@@ -14,11 +14,10 @@ import java.awt.Point;
 public class Vector {
     
     private int id;
-    private Point puntoInicial, puntoFinal;
+    private Point puntoFinal;
 
-    public Vector(int id, Point puntoInicial, Point puntoFinal) {
+    public Vector(int id, Point puntoFinal) {
         this.id = id;
-        this.puntoInicial = puntoInicial;
         this.puntoFinal = puntoFinal;
     }
     
@@ -31,15 +30,7 @@ public class Vector {
     public void setId(int id) {
         this.id = id;
     }
-
-    public Point getPuntoInicial() {
-        return puntoInicial;
-    }
-
-    public void setPuntoInicial(Point puntoInicial) {
-        this.puntoInicial = puntoInicial;
-    }
-
+   
     public Point getPuntoFinal() {
         return puntoFinal;
     }
