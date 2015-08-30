@@ -29,6 +29,11 @@ public class VectorGrafico {
         pFlecha2 = new Point();
         puntosFlecha();
     }
+
+    public VectorGrafico() {
+    }
+    
+    
     
     private void puntosFlecha() {
         double ang = 0.0, angSep = 0.0;
