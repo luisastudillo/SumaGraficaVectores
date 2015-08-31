@@ -98,10 +98,12 @@ public  class ManejoVectores {
         temporal = nuevo;
     }
     
-    public void transformarALogicas(){
-        
-        
-        
+    public Point transformarALogicas(Point p){
+        Point punto = new Point();
+        Point anterior = listaVectoresGraficos.get(id).getPuntoFinal();
+        punto.x = p.x-anterior.x;
+        punto.y = anterior.y - p.y;
+        return punto;
     }
     
     public ArrayList<Vector> getListaVectores() {

@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
+import vectores.ManejoVectores;
 import vectoresGraficos.PanelVectores;
 
 /**
@@ -48,13 +49,14 @@ public class VentanaSumaVectoresGrafico extends JFrame{
             @Override
             public void mouseClicked(MouseEvent event){
                 Point punto = new Point(event.getX(), event.getY());
-                
-                punto.x = punto.x - 350;
-                punto.y = 325-punto.y;
-                canvas.getManejadorVectores().agregarVector(punto);
-                
+                System.out.println(punto);
+                punto = canvas.getManejadorVectores().transformarALogicas(punto);               
+                System.out.println(punto);
+                canvas.getManejadorVectores().agregarVector(punto);                
                 
             }
+            
+            
 
     }
     

@@ -19,9 +19,9 @@ public class Main {
     
     public static void main(String[] args){
         new VentanaSumaVectoresGrafico();
-        new Login();
-        new NuevoUsuario();
-        new MenuPrincipal();
+//        new Login();
+//        new NuevoUsuario();
+//        new MenuPrincipal();
     }
     
 }
