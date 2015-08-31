@@ -23,9 +23,11 @@ public  class ManejoVectores {
     public ManejoVectores(){
         listaVectores = new ArrayList<>();
         listaVectoresGraficos = new ArrayList<>();
-        Point cero = new Point(0,0);
         
+        Point cero = new Point(0,0);        
         listaVectores.add(new Vector(id, cero));
+        
+        cero = new Point(350,325);
         listaVectoresGraficos.add(new VectorGrafico(id, cero,cero));
     }
     
@@ -57,18 +59,37 @@ public  class ManejoVectores {
     
     public void agregarVectorGrafico(Vector agregado){
         VectorGrafico ultimo = listaVectoresGraficos.get(id-1);
-        Point pFinalNuevo = new Point(ultimo.getPuntoFinal().x + agregado.getPuntoFinal().x, ultimo.getPuntoFinal().y + agregado.getPuntoFinal().y);
-        VectorGrafico nuevo = new VectorGrafico(id, ultimo.getPuntoFinal(), pFinalNuevo);
+        Point pFinalAnt = ultimo.getPuntoFinal();
+        Point pInicialNuevo = pFinalAnt;
+        Point pAgregado = agregado.getPuntoFinal();
+        Point pFinalNuevo = new Point();
+        pFinalNuevo.x = pFinalAnt.x + pAgregado.x;
+        pFinalNuevo.y = pFinalAnt.y - pAgregado.y;
+        
+        VectorGrafico nuevo = new VectorGrafico(id, pInicialNuevo, pFinalNuevo);
         listaVectoresGraficos.add(nuevo);
         actualizarVectorGráficoResultante();
     }
     
     public void actualizarVectorGráficoResultante(){
         VectorGrafico resultante = listaVectoresGraficos.get(0);
-        VectorGrafico ultimo = listaVectoresGraficos.get(id);
-        VectorGrafico resultanteNuevo = new VectorGrafico(0, resultante.getPuntoInicial(), ultimo.getPuntoFinal());
+        Vector agregado = listaVectores.get(id);
+        
+        Point pAgregado = agregado.getPuntoFinal();
+        
+        Point pFinRes = resultante.getPuntoFinal();
+        
+        Point pIniResNuevo = resultante.getPuntoInicial();
+        
+        Point pFinResNuevo = new Point();
+        
+        pFinResNuevo.x = pFinRes.x +  pAgregado.x;
+        pFinResNuevo.y = pFinRes.x - pAgregado.y;
+        
+        
+        VectorGrafico resultanteNuevo = new VectorGrafico(0, pIniResNuevo, pFinResNuevo);
         listaVectoresGraficos.remove(0);
-        listaVectoresGraficos.add(0, resultanteNuevo);        
+        listaVectoresGraficos.add(0, resultanteNuevo);
     }
     
 

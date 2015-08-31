@@ -16,12 +16,12 @@ public class VentanaSumaVectoresCoordenadas extends JFrame{
 
     public VentanaSumaVectoresCoordenadas() {
         super("Suma de Vectores");
+        this.setLayout(null);
         PanelVectores canvas = new PanelVectores();
-        this.setSize(400, 400);
+        this.setSize(800, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().add(canvas);
-        this.setVisible(true);
-        
+        this.setVisible(true);        
     }
     
 }
