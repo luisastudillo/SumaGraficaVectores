@@ -6,6 +6,7 @@
 package Principal;
 
 import ventanas.VentanaSumaVectoresCoordenadas;
+import ventanas.VentanaSumaVectoresGrafico;
 
 /**
  *
@@ -14,7 +15,7 @@ import ventanas.VentanaSumaVectoresCoordenadas;
 public class Main {
     
     public static void main(String[] args){
-        new VentanaSumaVectoresCoordenadas();
+        new VentanaSumaVectoresGrafico();
     }
     
 }
