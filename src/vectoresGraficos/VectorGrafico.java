@@ -64,8 +64,6 @@ public class VectorGrafico {
         pFlecha1.y = (int) (puntoFinal.y - dist * Math.sin(ang - Math.toRadians(angSep)));
         pFlecha2.x = (int) (puntoFinal.x + dist * Math.cos(ang + Math.toRadians(angSep)));
         pFlecha2.y = (int) (puntoFinal.y - dist * Math.sin(ang + Math.toRadians(angSep)));
-        System.out.println("Coordenadas de flecha 1: " + pFlecha1.x + "," + pFlecha1.y);
-        System.out.println("Coordenadas de flecha 2: " + pFlecha2.x + "," + pFlecha2.y);
     }
             
     private Color generarColor(){
