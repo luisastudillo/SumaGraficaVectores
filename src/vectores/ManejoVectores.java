@@ -30,8 +30,7 @@ public  class ManejoVectores {
         cero = new Point(350,325);
         listaVectoresGraficos.add(new VectorGrafico(id, cero,cero));
     }
-    
-    
+        
     public boolean agregarVector(Point pFinalNuevo) {
         Vector ultimo = listaVectores.get(id);
         if (ultimo.getPuntoFinal().equals(pFinalNuevo)) {                       
@@ -73,31 +72,21 @@ public  class ManejoVectores {
     
     public void actualizarVectorGráficoResultante(){
         VectorGrafico resultante = listaVectoresGraficos.get(0);
-        Vector agregado = listaVectores.get(id);
+        VectorGrafico ultimo = listaVectoresGraficos.get(id);
         
-        Point pAgregado = agregado.getPuntoFinal();
-        
-        Point pFinRes = resultante.getPuntoFinal();
+        Point pFinUltimo = ultimo.getPuntoFinal();
         
         Point pIniResNuevo = resultante.getPuntoInicial();
         
-        Point pFinResNuevo = new Point();
-        
-        pFinResNuevo.x = pFinRes.x +  pAgregado.x;
-        pFinResNuevo.y = pFinRes.x - pAgregado.y;
-        
-        
-        VectorGrafico resultanteNuevo = new VectorGrafico(0, pIniResNuevo, pFinResNuevo);
+        VectorGrafico resultanteNuevo = new VectorGrafico(0, pIniResNuevo, pFinUltimo);
         listaVectoresGraficos.remove(0);
         listaVectoresGraficos.add(0, resultanteNuevo);
     }
     
-
     public ArrayList<Vector> getListaVectores() {
         return listaVectores;
     }
     
-
     public ArrayList<VectorGrafico> getListaVectoresGraficos() {
         return listaVectoresGraficos;
     }
