@@ -5,6 +5,7 @@
  */
 package vectores;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
 import vectoresGraficos.VectorGrafico;
@@ -17,6 +18,7 @@ public  class ManejoVectores {
     
     ArrayList<Vector> listaVectores;
     ArrayList<VectorGrafico> listaVectoresGraficos;
+    VectorGrafico temporal;
     
     int id =0;
     
@@ -29,6 +31,8 @@ public  class ManejoVectores {
         
         cero = new Point(350,325);
         listaVectoresGraficos.add(new VectorGrafico(id, cero,cero));
+        
+        temporal = new VectorGrafico(-1, cero, cero);
     }
         
     public boolean agregarVector(Point pFinalNuevo) {
@@ -79,8 +83,25 @@ public  class ManejoVectores {
         Point pIniResNuevo = resultante.getPuntoInicial();
         
         VectorGrafico resultanteNuevo = new VectorGrafico(0, pIniResNuevo, pFinUltimo);
+        resultanteNuevo.setColor(Color.GREEN);
         listaVectoresGraficos.remove(0);
         listaVectoresGraficos.add(0, resultanteNuevo);
+    }
+    
+    public void actualizarTemporal(Point p){
+        
+        VectorGrafico ultimo = listaVectoresGraficos.get(id);
+        Point pFinalAnt = ultimo.getPuntoFinal();
+        Point pInicialNuevo = pFinalAnt;     
+        
+        VectorGrafico nuevo = new VectorGrafico(id, pInicialNuevo, p);
+        temporal = nuevo;
+    }
+    
+    public void transformarALogicas(){
+        
+        
+        
     }
     
     public ArrayList<Vector> getListaVectores() {
@@ -90,5 +111,15 @@ public  class ManejoVectores {
     public ArrayList<VectorGrafico> getListaVectoresGraficos() {
         return listaVectoresGraficos;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public VectorGrafico getTemporal() {
+        return temporal;
+    }
+    
+    
    
 }
