@@ -25,8 +25,8 @@ public class Main {
      //   new VentanaSumaVectoresGrafico();
 //        new Login();
 //        new NuevoUsuario();
-//        new MenuPrincipal();
+        new MenuPrincipal();
 //        new IngresoCoordenadas();
-        new IngresoGrafico();
+//        new IngresoGrafico();
     }
 }

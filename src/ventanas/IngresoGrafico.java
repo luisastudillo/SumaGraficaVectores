@@ -23,7 +23,8 @@ import vectoresGraficos.PanelVectores;
 public class IngresoGrafico extends JFrame{
     
     public static JLabel fondo = new JLabel();
-    
+    JFrame esta;
+    JFrame anterior;
     Fondo panelFondo;
     PanelVectores panel;
     JLabel resultante;
@@ -33,8 +34,11 @@ public class IngresoGrafico extends JFrame{
     JButton btnRegresar;
     JButton btnLimpiar;
         
-    public IngresoGrafico() { 
+    public IngresoGrafico(JFrame anterior) { 
         super("Ingreso Gráfico");
+        this.anterior = anterior;
+        esta = this;
+        
         this.setSize(980, 730);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane();
@@ -75,6 +79,14 @@ public class IngresoGrafico extends JFrame{
         btnRegresar.setIcon(imgLabel2);
         btnRegresar.setBorderPainted(false); 
         btnRegresar.setContentAreaFilled(false);
+        btnRegresar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                anterior.setVisible(true);
+                esta.dispose();
+            }
+        });
         panelFondo.add(btnRegresar);
         
         btnLimpiar = new JButton();

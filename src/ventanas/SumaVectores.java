@@ -2,6 +2,8 @@ package ventanas;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,7 +17,8 @@ import javax.swing.JLabel;
 public class SumaVectores extends JFrame{
     
     public static JLabel fondo = new JLabel();
-    
+    JFrame anterior;
+    JFrame esta;
     Fondo panelFondo;
     JLabel sumaVect;
     JLabel imgSumaVect;
@@ -23,8 +26,11 @@ public class SumaVectores extends JFrame{
     JButton btnIngCoor;
     JButton btnRegresar;
     
-    public SumaVectores() { 
+    public SumaVectores(JFrame anterior) { 
         super("Suma de Vectores");
+        this.anterior = anterior;
+        esta = this;
+        
         this.setSize(850, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane();
@@ -47,6 +53,15 @@ public class SumaVectores extends JFrame{
         btnIngGrafico.setFont(new Font("Sakkal Majalla", Font.BOLD, 30));
         btnIngGrafico.setBorderPainted(false); //Desaparece el borde del botón
         btnIngGrafico.setContentAreaFilled(false);
+        btnIngGrafico.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IngresoGrafico ventana = new IngresoGrafico(esta);
+                ventana.setVisible(true);
+                esta.setVisible(false);
+            }
+        });
         panelFondo.add(btnIngGrafico);
         
         btnIngCoor = new JButton();
@@ -55,6 +70,15 @@ public class SumaVectores extends JFrame{
         btnIngCoor.setFont(new Font("Sakkal Majalla", Font.BOLD, 30));
         btnIngCoor.setBorderPainted(false); 
         btnIngCoor.setContentAreaFilled(false);
+        btnIngCoor.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IngresoCoordenadas ventana = new IngresoCoordenadas(esta);
+                ventana.setVisible(true);
+                esta.setVisible(false);
+            }
+        });
         panelFondo.add(btnIngCoor);
         
         btnRegresar = new JButton();
@@ -64,6 +88,14 @@ public class SumaVectores extends JFrame{
         btnRegresar.setIcon(imgLabel);
         btnRegresar.setBorderPainted(false); 
         btnRegresar.setContentAreaFilled(false);
+        btnRegresar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                anterior.setVisible(true);
+                esta.dispose();
+            }
+        });
         panelFondo.add(btnRegresar);
         
         imgSumaVect = new JLabel ();

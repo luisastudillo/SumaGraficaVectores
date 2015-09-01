@@ -2,6 +2,8 @@ package ventanas;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +19,7 @@ public class MenuPrincipal extends JFrame{
     public static JLabel fondo = new JLabel();
     
     Fondo panelFondo;
+    JFrame esta = this;
     JLabel menu;
     JButton btnTeoria;
     JButton btnEjerResueltos;
@@ -73,6 +76,15 @@ public class MenuPrincipal extends JFrame{
         btnSumaVectores.setFont(new Font("Sakkal Majalla", Font.BOLD, 24));
         btnSumaVectores.setBorderPainted(false); //Desaparece el borde del botón
         btnSumaVectores.setContentAreaFilled(false);
+        btnSumaVectores.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SumaVectores ventana = new SumaVectores(esta);
+                esta.setVisible(false);
+                ventana.setVisible(true);
+            }
+        });
         panelFondo.add(btnSumaVectores);
         
         btnReportesUso = new JButton();

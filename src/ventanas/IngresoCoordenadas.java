@@ -21,6 +21,8 @@ import vectoresGraficos.PanelVectores;
 public class IngresoCoordenadas extends JFrame{
     
     public static JLabel fondo = new JLabel();
+    JFrame esta;
+    JFrame anterior;
     
     Fondo panelFondo;
     PanelVectores panel;
@@ -41,8 +43,11 @@ public class IngresoCoordenadas extends JFrame{
     JButton btnRegresar;
     JButton btnLimpiar;
         
-    public IngresoCoordenadas() { 
+    public IngresoCoordenadas(JFrame anterior) { 
         super("Ingreso por Coordenadas");
+        this.anterior = anterior;
+        esta = this;
+        
         this.setSize(970, 690);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane();
@@ -125,6 +130,14 @@ public class IngresoCoordenadas extends JFrame{
         btnRegresar.setIcon(imgLabel2);
         btnRegresar.setBorderPainted(false); 
         btnRegresar.setContentAreaFilled(false);
+        btnRegresar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                anterior.setVisible(true);
+                esta.dispose();
+            }
+        });
         panelFondo.add(btnRegresar);
         
         btnLimpiar = new JButton();
