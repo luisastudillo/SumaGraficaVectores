@@ -5,6 +5,7 @@
  */
 package Principal;
 
+import ventanas.IngresoCoordenadas;
 import ventanas.Login;
 import ventanas.MenuPrincipal;
 import ventanas.NuevoUsuario;
@@ -18,10 +19,11 @@ import ventanas.VentanaSumaVectoresGrafico;
 public class Main {
     
     public static void main(String[] args){
-        new VentanaSumaVectoresGrafico();
-//        new Login();
-//        new NuevoUsuario();
-//        new MenuPrincipal();
+     //   new VentanaSumaVectoresGrafico();
+        new Login();
+        new NuevoUsuario();
+        new MenuPrincipal();
+        new IngresoCoordenadas();
     }
     
 }
