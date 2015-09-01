@@ -60,6 +60,15 @@ public class MenuPrincipal extends JFrame{
         btnEjerResueltos.setFont(new Font("Sakkal Majalla", Font.BOLD, 24));
         btnEjerResueltos.setBorderPainted(false); //Desaparece el borde del botón
         btnEjerResueltos.setContentAreaFilled(false);
+        btnEjerResueltos.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuEjerResueltos ventana = new MenuEjerResueltos(esta);
+                esta.setVisible(false);
+                ventana.setVisible(true);
+            }
+        });
         panelFondo.add(btnEjerResueltos);
         
         btnEjerPropuestos = new JButton();

@@ -6,6 +6,8 @@ package ventanas;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +21,8 @@ import javax.swing.JLabel;
 public class MenuEjerResueltos extends JFrame{
     
     public static JLabel fondo = new JLabel();
+    JFrame esta;
+    JFrame anterior;
     
     Fondo panelFondo;
     JLabel sumaVect;
@@ -28,8 +32,10 @@ public class MenuEjerResueltos extends JFrame{
     JButton btnSumaGraficaN;
     JButton btnRegresar;
     
-    public MenuEjerResueltos() { 
+    public MenuEjerResueltos(JFrame anterior) { 
         super("Menú de Ejercicios Resueltos");
+        this.anterior = anterior;
+        esta = this;
         this.setSize(850, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane();
@@ -52,6 +58,15 @@ public class MenuEjerResueltos extends JFrame{
         btnSumaGrafica1.setFont(new Font("Sakkal Majalla", Font.BOLD, 30));
         btnSumaGrafica1.setBorderPainted(false); 
         btnSumaGrafica1.setContentAreaFilled(false);
+        btnSumaGrafica1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VerPdf ventana = new VerPdf(esta);
+                esta.setVisible(false);
+                ventana.setVisible(true);
+            }
+        });
         panelFondo.add(btnSumaGrafica1);
         
         btnSumaGrafica2 = new JButton();
@@ -77,6 +92,14 @@ public class MenuEjerResueltos extends JFrame{
         btnRegresar.setIcon(imgLabel);
         btnRegresar.setBorderPainted(false); 
         btnRegresar.setContentAreaFilled(false);
+        btnRegresar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                anterior.setVisible(true);
+                esta.dispose();
+            }
+        });
         panelFondo.add(btnRegresar);
         
         imgSumaVect = new JLabel ();
