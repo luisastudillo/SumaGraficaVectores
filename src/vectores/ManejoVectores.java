@@ -106,6 +106,12 @@ public  class ManejoVectores {
         return punto;
     }
     
+    public String resultante(){
+        Point punto = listaVectores.get(0).getPuntoFinal();
+        String retorno = punto.x + "," + punto.y;
+        return retorno;
+    }
+    
     public ArrayList<Vector> getListaVectores() {
         return listaVectores;
     }
@@ -121,6 +127,12 @@ public  class ManejoVectores {
     public VectorGrafico getTemporal() {
         return temporal;
     }
+
+    public void setTemporal(VectorGrafico temporal) {
+        this.temporal = temporal;
+    }
+    
+    
     
     
    

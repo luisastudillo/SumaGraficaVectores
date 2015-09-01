@@ -2,12 +2,16 @@ package ventanas;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import vectores.ManejoVectores;
 import vectoresGraficos.PanelVectores;
 
 /**
@@ -39,58 +43,74 @@ public class IngresoCoordenadas extends JFrame{
         
     public IngresoCoordenadas() { 
         super("Ingreso por Coordenadas");
-        this.setSize(850, 700);
+        this.setSize(970, 690);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane();
-        this.setLayout(null);
-       
-        panel = new PanelVectores();
-        panel.setBounds(0, 0, 700, 650);
+        this.setLayout(null); 
         
         panelFondo = new Fondo();
-        panelFondo.setBounds(0, 0, 850, 700);
-        panelFondo.setLayout(null);   
+        panelFondo.setBounds(0, 0, 970, 700);
+        panelFondo.setLayout(null);
+
+        panel = new PanelVectores();
+        panel.setBounds(0, 0, 700, 650);
+        panel.getManejadorVectores().setTemporal(null);
+        panelFondo.add(panel);
         
         coordenadas = new JLabel();
         coordenadas.setText("Ingrese las coordenadas");
-        coordenadas.setBounds(575, 20, 300, 40);
+        coordenadas.setBounds(725, 20, 300, 40);
         coordenadas.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 20)); 
 	coordenadas.setForeground(Color.black); //Pone color a las letras 
         panelFondo.add(coordenadas);
         
         coorX = new JLabel();
         coorX.setText("X");
-        coorX.setBounds(590, 75, 20, 40);
+        coorX.setBounds(740, 75, 20, 40);
         coorX.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 18)); 
         panelFondo.add(coorX);
         
         coorY = new JLabel();
         coorY.setText("Y");
-        coorY.setBounds(700, 75, 20, 40);
+        coorY.setBounds(850, 75, 20, 40);
         coorY.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 18)); 
         panelFondo.add(coorY);
         
         ingCoorX = new JTextField();
         ingCoorX.setText("");
-        ingCoorX.setBounds(612, 85, 45, 25);
+        ingCoorX.setBounds(762, 85, 45, 25);
         panelFondo.add(ingCoorX);
         
         ingCoorY = new JTextField();
         ingCoorY.setText("");
-        ingCoorY.setBounds(722, 85, 45, 25);
+        ingCoorY.setBounds(872, 85, 45, 25);
         panelFondo.add(ingCoorY);
               
         btnAgregar = new JButton();
-        btnAgregar.setBounds(613, 155, 150, 70);
+        btnAgregar.setBounds(763, 155, 150, 70);
         Icon imgLabel = new ImageIcon(getClass().
                 getResource("/imagenes/agregar.png"));
         btnAgregar.setIcon(imgLabel);
         btnAgregar.setBorderPainted(false); //Desaparece el borde del botón
         btnAgregar.setContentAreaFilled(false);
+        btnAgregar.addActionListener(
+        
+                new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Point p = new Point(Integer.parseInt(ingCoorX.getText()), Integer.parseInt(ingCoorY.getText()));
+                panel.getManejadorVectores().agregarVector(p);
+                resultado.setText(panel.getManejadorVectores().resultante());
+                panel.repaint();
+            }
+        }
+                
+        );        
         panelFondo.add(btnAgregar);
         
         btnBorrar = new JButton();
-        btnBorrar.setBounds(613, 237, 150, 70);
+        btnBorrar.setBounds(763, 237, 150, 70);
         Icon imgLabel1 = new ImageIcon(getClass().
                 getResource("/imagenes/borrar2.png"));
         btnBorrar.setIcon(imgLabel1);
@@ -99,7 +119,7 @@ public class IngresoCoordenadas extends JFrame{
         panelFondo.add(btnBorrar);
         
         btnRegresar = new JButton();
-        btnRegresar.setBounds(614, 318, 150, 75);
+        btnRegresar.setBounds(764, 318, 150, 75);
         Icon imgLabel2 = new ImageIcon(getClass().
                 getResource("/imagenes/regresar2.png"));
         btnRegresar.setIcon(imgLabel2);
@@ -108,28 +128,38 @@ public class IngresoCoordenadas extends JFrame{
         panelFondo.add(btnRegresar);
         
         btnLimpiar = new JButton();
-        btnLimpiar.setBounds(614, 388, 150, 75);
+        btnLimpiar.setBounds(764, 388, 150, 75);
         Icon imgLabel3 = new ImageIcon(getClass().
                 getResource("/imagenes/limpiar.png"));
         btnLimpiar.setIcon(imgLabel3);
         btnLimpiar.setBorderPainted(false); 
         btnLimpiar.setContentAreaFilled(false);
+        btnLimpiar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setManejadorVectores(new ManejoVectores());
+                panel.getManejadorVectores().setTemporal(null);
+                panel.repaint();
+            }
+        });
+        
         panelFondo.add(btnLimpiar);
         
         resultante = new JLabel();
         resultante.setText("Vector Resultante:");
-        resultante.setBounds(575, 490, 160, 40);
+        resultante.setBounds(725, 490, 160, 40);
         resultante.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 15)); 
         panelFondo.add(resultante);
         
         resultado = new JTextField();
         resultado.setText("");
-        resultado.setBounds(720, 494, 80, 27);
-        resultado.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 15)); 
+        resultado.setBounds(870, 494, 80, 27);
+        resultado.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 15));
+        resultado.setEditable(false);
         panelFondo.add(resultado);
         
         this.add(panelFondo);
-        this.add(panel);
         this.setVisible(true);     
     }      
     

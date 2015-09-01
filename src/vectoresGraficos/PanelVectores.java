@@ -47,19 +47,24 @@ public class PanelVectores extends Canvas{
         }
         g2.setColor(Color.RED);
         VectorGrafico vector = manejadorVectores.getTemporal();
+        if(vector != null){
         g2.drawLine(vector.getPuntoInicial().x, vector.getPuntoInicial().y, vector.getPuntoFinal().x, vector.getPuntoFinal().y);
         //Grafico las saetas
         g2.drawLine(vector.getPuntoFinal().x, vector.getPuntoFinal().y, vector.getpFlecha1().x, vector.getpFlecha1().y);
         g2.drawLine(vector.getPuntoFinal().x, vector.getPuntoFinal().y, vector.getpFlecha2().x, vector.getpFlecha2().y);
-
+        }
         g2.setStroke(new BasicStroke(3.5f));
-        g2.drawRect(0, 0, 700, 650);
+//        g2.drawRect(0, 0, 700, 650);
         g2.fillOval(346, 321, 5, 5);
 
     }
 
     public ManejoVectores getManejadorVectores() {
         return manejadorVectores;
+    }
+
+    public void setManejadorVectores(ManejoVectores manejadorVectores) {
+        this.manejadorVectores = manejadorVectores;
     }
     
     
