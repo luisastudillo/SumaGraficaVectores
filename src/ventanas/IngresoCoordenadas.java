@@ -161,6 +161,5 @@ public class IngresoCoordenadas extends JFrame{
         
         this.add(panelFondo);
         this.setVisible(true);     
-    }      
-    
+    }         
 }

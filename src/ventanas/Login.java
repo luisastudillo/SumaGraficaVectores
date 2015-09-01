@@ -10,24 +10,28 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Login extends JFrame{
     
     public static JLabel fondo = new JLabel();
     
+    JFrame este = this;
     Fondo panelFondo;
     JLabel sistema;
     JLabel usuario;
     JLabel contrasena;
     JTextField ingUsuario;
-    JTextField ingContrasena;
+    JPasswordField ingContrasena;
     JButton btnIngresar;
     JButton btnNuevoUsuario;
     
@@ -51,7 +55,7 @@ public class Login extends JFrame{
                
         usuario = new JLabel();
         usuario.setBounds(260, 190, 100, 100);
-        usuario.setText(" ");
+        usuario.setText("");
         Icon imgLabel = new ImageIcon(getClass().
                 getResource("/imagenes/usuario1.png"));
         usuario.setIcon(imgLabel);
@@ -70,9 +74,9 @@ public class Login extends JFrame{
         ingUsuario.setText(" ");
         panelFondo.add(ingUsuario);
         
-        ingContrasena = new JTextField();
+        ingContrasena = new JPasswordField();
         ingContrasena.setBounds(420, 340, 130, 30);
-        ingContrasena.setText(" ");
+        ingContrasena.setText("");
         panelFondo.add(ingContrasena);
                 
         btnIngresar = new JButton();
@@ -82,6 +86,26 @@ public class Login extends JFrame{
         btnIngresar.setIcon(imgLabel2);
         btnIngresar.setBorderPainted(false); //Desaparece el borde del botón
         btnIngresar.setContentAreaFilled(false);
+        btnIngresar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String usuario, contrasenia;
+                usuario = ingUsuario.getText();
+                System.out.println(usuario);
+                contrasenia = ingContrasena.getText();
+                System.out.println(usuario);
+                if(usuario.equals("admin") && contrasenia.equals("secreta")){
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    este.dispose();
+                }
+//                MenuPrincipal menu = new MenuPrincipal();
+//                    menu.setVisible(true);
+//                    este.dispose();
+            }
+        });
+        
         panelFondo.add(btnIngresar);
               
         btnNuevoUsuario = new JButton();
