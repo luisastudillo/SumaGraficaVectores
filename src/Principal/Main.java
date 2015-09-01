@@ -8,6 +8,7 @@ package Principal;
 import ventanas.IngresoCoordenadas;
 import ventanas.IngresoGrafico;
 import ventanas.Login;
+import ventanas.MenuEjerResueltos;
 import ventanas.MenuPrincipal;
 import ventanas.NuevoUsuario;
 import ventanas.SumaVectores;
@@ -28,5 +29,6 @@ public class Main {
         new IngresoCoordenadas();
         new SumaVectores();
         new IngresoGrafico();
+        new MenuEjerResueltos();
     }
 }
