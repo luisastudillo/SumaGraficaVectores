@@ -9,6 +9,7 @@ import ventanas.IngresoCoordenadas;
 import ventanas.Login;
 import ventanas.MenuPrincipal;
 import ventanas.NuevoUsuario;
+import ventanas.SumaVectores;
 import ventanas.VentanaSumaVectoresCoordenadas;
 import ventanas.VentanaSumaVectoresGrafico;
 
@@ -24,6 +25,6 @@ public class Main {
         new NuevoUsuario();
         new MenuPrincipal();
         new IngresoCoordenadas();
+        new SumaVectores();
     }
-    
 }
