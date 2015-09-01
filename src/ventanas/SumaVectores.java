@@ -17,8 +17,8 @@ import javax.swing.JLabel;
 public class SumaVectores extends JFrame{
     
     public static JLabel fondo = new JLabel();
-    JFrame anterior;
-    JFrame esta;
+    final JFrame anterior;
+    final JFrame esta;
     Fondo panelFondo;
     JLabel sumaVect;
     JLabel imgSumaVect;

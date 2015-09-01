@@ -21,8 +21,8 @@ import vectoresGraficos.PanelVectores;
 public class IngresoCoordenadas extends JFrame{
     
     public static JLabel fondo = new JLabel();
-    JFrame esta;
-    JFrame anterior;
+    final JFrame esta;
+    final JFrame anterior;
     
     Fondo panelFondo;
     PanelVectores panel;
