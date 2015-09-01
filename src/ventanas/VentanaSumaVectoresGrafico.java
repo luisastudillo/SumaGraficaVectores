@@ -37,8 +37,6 @@ public class VentanaSumaVectoresGrafico extends JFrame{
     
     
     private class Listener extends MouseAdapter{
-        
-        
             @Override
             public void mouseMoved(MouseEvent event) {
                 Point nuevo = new Point(event.getX(), event.getY());
@@ -55,9 +53,6 @@ public class VentanaSumaVectoresGrafico extends JFrame{
                 canvas.getManejadorVectores().agregarVector(punto);                
                 
             }
-            
-            
-
     }
     
     

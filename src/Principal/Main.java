@@ -23,9 +23,10 @@ public class Main {
     
     public static void main(String[] args){
      //   new VentanaSumaVectoresGrafico();
-        new Login();
+//        new Login();
 //        new NuevoUsuario();
 //        new MenuPrincipal();
 //        new IngresoCoordenadas();
+        new IngresoGrafico();
     }
 }
