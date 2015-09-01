@@ -6,6 +6,7 @@
 package Principal;
 
 import ventanas.IngresoCoordenadas;
+import ventanas.IngresoGrafico;
 import ventanas.Login;
 import ventanas.MenuPrincipal;
 import ventanas.NuevoUsuario;
@@ -26,5 +27,6 @@ public class Main {
         new MenuPrincipal();
         new IngresoCoordenadas();
         new SumaVectores();
+        new IngresoGrafico();
     }
 }
